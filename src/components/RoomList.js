@@ -20,6 +20,22 @@ class RoomList extends Component {
     });
   }
 
+  createRoom(newRoomName) {
+    this.roomsRef.push({
+      name: newRoomName
+    });
+  }
+
+  handleRoomCreate() {
+    let newRoom = prompt('Please enter room name:');
+
+    if (newRoom == null || newRoom == '') {
+      alert('Room canceled');
+    }else {
+      this.createRoom(newRoom);
+    }
+  }
+
   render() {
     return(
       <section className='roomlist'>
@@ -30,6 +46,9 @@ class RoomList extends Component {
             )}
           </ul>
         </section>
+        <button onClick={() => this.handleRoomCreate()}>
+          Create Room
+        </button>
 
       </section>
     );
