@@ -42,7 +42,7 @@ class RoomList extends Component {
         <section>
           <ul>
             {this.state.rooms.map(room =>
-              <li key={room.key}>{room.name}</li>
+              <li key={room.key}>{room.name/*add an onclick here*/}</li>
             )}
           </ul>
         </section>
