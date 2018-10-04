@@ -21,7 +21,11 @@ class MessageList extends Component {
   }
 
   render() {
-    return();
+    return(
+      <section>
+        Messages Go Here
+      </section>
+    );
   }
 }
 

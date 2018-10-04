@@ -36,6 +36,13 @@ class RoomList extends Component {
     }
   }
 
+  handleMessageDisplay() {
+    this.messageDisplay = this.props.firebase.database().ref('messages').orderByChild('roomId')
+
+  }
+
+
+//RETURN this.RoomRef = this.props.firebase.database().ref('messages').equalTo('room1') or roomId when clicking on the room
   render() {
     return(
       <section className='roomlist'>
@@ -49,6 +56,9 @@ class RoomList extends Component {
         <button onClick={() => this.handleRoomCreate()}>
           Create Room
         </button>
+        <section>
+          
+        </section>
 
       </section>
     );
