@@ -26,16 +26,19 @@ class App extends Component {
     this.setState({ activeRoom: room });
   }
 
+//change section with className=column to style column float left maybe?
   render() {
     return (
       <div className="App">
         <header>
           <h1>Bloc Chat</h1>
         </header>
-        <main>
+        <section>
           <RoomList firebase={firebase} handleActiveRoom={this.handleActiveRoom.bind(this)}/>
+        </section>
+        <section>
           <MessageList firebase={firebase} activeRoom={this.state.activeRoom}/>
-        </main>
+        </section>
       </div>
     );
   }

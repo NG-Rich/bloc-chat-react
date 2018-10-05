@@ -29,21 +29,13 @@ class RoomList extends Component {
   handleRoomCreate() {
     let newRoom = prompt('Please enter room name:');
 
-    if (newRoom == null || newRoom == '') {
+    if (newRoom === null || newRoom === '') {
       alert('Room canceled');
     }else {
       this.createRoom(newRoom);
     }
   }
 
-  handleMessageDisplay() {
-    //this.messageDisplay = this.props.firebase.database().ref('messages').orderByChild('roomId')
-    //DELETE THIS MAYBE
-    console.log('hello');
-  }
-
-
-//RETURN this.RoomRef = this.props.firebase.database().ref('messages').equalTo('room1') or roomId when clicking on the room
   render() {
     return(
       <section className='roomlist'>
@@ -53,14 +45,10 @@ class RoomList extends Component {
         <section>
           <ul>
             {this.state.rooms.map(room =>
-              <li key={room.key} onClick={() => this.props.handleActiveRoom(room)}>{room.name/*add an onclick here*/}</li>
+              <li key={room.key} onClick={() => this.props.handleActiveRoom(room)}>{room.name}</li>
             )}
           </ul>
         </section>
-        <section>
-
-        </section>
-
       </section>
     );
   }

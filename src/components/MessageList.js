@@ -22,8 +22,14 @@ class MessageList extends Component {
 
   render() {
     return(
-      <div>
-        Messages Go Here
+      <div id='message-list'>
+        <h3>{this.props.activeRoom.name}</h3>
+        {this.state.messages.filter(message => message.roomId === this.props.activeRoom.key).map(message =>
+          <div key={message.key}>
+            <h4>{message.username}</h4>
+            <p><span style={{fontSize: 15}}>{message.sentAt} - {message.content}</span></p>
+          </div>
+        )}
       </div>
     );
   }
