@@ -22,9 +22,9 @@ class MessageList extends Component {
 
   render() {
     return(
-      <section>
+      <div>
         Messages Go Here
-      </section>
+      </div>
     );
   }
 }

@@ -37,8 +37,9 @@ class RoomList extends Component {
   }
 
   handleMessageDisplay() {
-    this.messageDisplay = this.props.firebase.database().ref('messages').orderByChild('roomId')
-
+    //this.messageDisplay = this.props.firebase.database().ref('messages').orderByChild('roomId')
+    //DELETE THIS MAYBE
+    console.log('hello');
   }
 
 
@@ -46,18 +47,18 @@ class RoomList extends Component {
   render() {
     return(
       <section className='roomlist'>
-        <section>
-          <ul>
-            {this.state.rooms.map(room =>
-              <li key={room.key}>{room.name/*add an onclick here*/}</li>
-            )}
-          </ul>
-        </section>
         <button onClick={() => this.handleRoomCreate()}>
           Create Room
         </button>
         <section>
-          
+          <ul>
+            {this.state.rooms.map(room =>
+              <li key={room.key} onClick={() => this.props.handleActiveRoom(room)}>{room.name/*add an onclick here*/}</li>
+            )}
+          </ul>
+        </section>
+        <section>
+
         </section>
 
       </section>
