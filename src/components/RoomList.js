@@ -29,7 +29,7 @@ class RoomList extends Component {
   handleRoomCreate() {
     let newRoom = prompt('Please enter room name:');
 
-    if (newRoom == null || newRoom == '') {
+    if (newRoom === null || newRoom === '') {
       alert('Room canceled');
     }else {
       this.createRoom(newRoom);
@@ -39,17 +39,16 @@ class RoomList extends Component {
   render() {
     return(
       <section className='roomlist'>
-        <section>
-          <ul>
-            {this.state.rooms.map(room =>
-              <li key={room.key}>{room.name}</li>
-            )}
-          </ul>
-        </section>
         <button onClick={() => this.handleRoomCreate()}>
           Create Room
         </button>
-
+        <section>
+          <ul>
+            {this.state.rooms.map(room =>
+              <li key={room.key} onClick={() => this.props.handleActiveRoom(room)}>{room.name}</li>
+            )}
+          </ul>
+        </section>
       </section>
     );
   }
