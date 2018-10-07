@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
+import User from './components/User';
 
 var config = {
   apiKey: "AIzaSyDRrM8ToyMeg8sXnj54WMqOJdENJNcS_W4",
@@ -18,12 +19,17 @@ class App extends Component {
     super(props);
 
     this.state = {
-      activeRoom: ''
+      activeRoom: '',
+      user: 'Guest'
     };
   }
 
   handleActiveRoom(room) {
     this.setState({ activeRoom: room });
+  }
+
+  setUser(user) {
+    this.setState({ user: user });
   }
 
 //change section with className=column to style column float left maybe?
@@ -34,10 +40,11 @@ class App extends Component {
           <h1>Bloc Chat</h1>
         </header>
         <section>
+          <User firebase={firebase} setUser={this.setUser.bind(this)} user={this.state.user}/>
           <RoomList firebase={firebase} handleActiveRoom={this.handleActiveRoom.bind(this)}/>
         </section>
         <section>
-          <MessageList firebase={firebase} activeRoom={this.state.activeRoom}/>
+          <MessageList firebase={firebase} activeRoom={this.state.activeRoom} user={this.state.user}/>
         </section>
       </div>
     );
