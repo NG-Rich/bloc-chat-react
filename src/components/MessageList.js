@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import SendMessage from './SendMessage';
+import moment from 'moment';
 
 class MessageList extends Component {
   constructor(props) {
@@ -20,6 +22,12 @@ class MessageList extends Component {
     });
   }
 
+  createMessage(newMsg) {
+    this.messagesRef.push({
+      content: newMsg, roomId: this.props.activeRoom.key, sentAt: moment(Date(this.props.firebase.database.ServerValue.TIMESTAMP)).format("hh:mm a"), username: this.props.user
+    });
+  }
+
   render() {
     return(
       <div id='message-list'>
@@ -30,6 +38,7 @@ class MessageList extends Component {
             <p><span style={{fontSize: 15}}>{message.sentAt} - {message.content}</span></p>
           </div>
         )}
+        {this.props.activeRoom === '' ? '' : <SendMessage user={this.props.user} createMessage={this.createMessage.bind(this)}/>}
       </div>
     );
   }
